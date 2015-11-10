@@ -1,5 +1,18 @@
 <html>
+    <head>
+        <title>SPA Example</title>
+    </head>
     <body>
-        <h1>I'm a single page application!</h1>
+        <h1>I'm a single page application</h1>
+        <ul data-bind="foreach: todoItems">
+            <li>
+                <span data-bind="text: name"></span>
+                <input type="checkbox" data-bind="checked: complete" />
+            </li>
+        </ul>
     </body>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.0.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js"></script>
+    <script src="/bower_components/ko.plus/src/ko.command.js"></script>
+    <script src="/js/page.js"></script>
 </html>

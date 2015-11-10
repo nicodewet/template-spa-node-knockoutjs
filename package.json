@@ -15,7 +15,7 @@
     "url": "git+https://github.com/nicodewet/template-spa-node-knockoutjs.git"
   },
   "author": "Nico de Wet",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/nicodewet/template-spa-node-knockoutjs/issues"
   },
