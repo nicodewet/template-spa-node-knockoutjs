@@ -1,6 +1,21 @@
 var TodoViewModel = function(data) {
     this.name = ko.observable(data.name);
     this.complete = ko.observable(data.complete);
+    
+    this.updateServer = ko.command(function() {
+        console.log("making the call with ... " + data.name + ", id: " + data.id)
+        return $.ajax({
+            url: "/api/todos/" + data.id,
+            type: "PUT",
+            contentType: "application/json",
+            data: JSON.stringify({
+                id: data.id,
+                name: data.name,
+                complete: data.complete
+            })
+        });
+    });
+    this.complete.subscribe(this.updateServer);
 };
 
 var TodoListViewModel = function() {

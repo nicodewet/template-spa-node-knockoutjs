@@ -1,9 +1,11 @@
 var express = require('express');
 var app = express();
 var path = require('path');
+var bodyParser = require('body-parser');
 
 // set static directories
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.json());
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
 app.get('/', function (req, res) {
@@ -15,10 +17,16 @@ app.get('/', function (req, res) {
 
 app.get("/api/todos", function(req, res) {
     res.status(200).json([
-    { name: "Item 1 from server", complete: false },
-    { name: "Item 2 from server", complete: false },
-    { name: "Completed Item from server", complete: true }
+    { id: 1, name: "Item 1 from server", complete: false },
+    { id: 2, name: "Item 2 from server", complete: false },
+    { id: 3, name: "Completed Item from server", complete: true }
     ]);
+    res.end();
+});
+
+app.put("/api/todos/:todoId", function(req, res) {
+    console.log(req.params.todoId + ": " + JSON.stringify(req.body, null, 4));
+    res.status(200);
     res.end();
 });
 
